@@ -12,21 +12,12 @@ import androidx.compose.runtime.remember
 @Composable
 fun ShowDialog(
     retryConnectAction: () -> Unit,
-    title:String,
-
+    description: String,
 ) {
     MaterialTheme {
         Column {
             val openDialog = remember { mutableStateOf(false) }
-
-            Button(onClick = {
-                openDialog.value = true
-            }) {
-                Text("Click me")
-            }
-
             if (openDialog.value) {
-
                 AlertDialog(
                     onDismissRequest = {
                         // Dismiss the dialog when the user clicks outside the dialog or on the back
@@ -35,10 +26,10 @@ fun ShowDialog(
                         openDialog.value = false
                     },
                     title = {
-                        Text(text = "Dialog Title")
+                        Text(text = "Ошибка соединения")
                     },
                     text = {
-                        Text("Here is a text ")
+                        Text(description)
                     },
                     confirmButton = {
                         Button(

@@ -15,7 +15,7 @@ class NewsRepository(
     private val newsLocalDataSource: NewsLocalDataSource,
     private val newsRemoteDataSource: NewsRemoteDataSource
 ) {
-    suspend fun getNews(): Flow<Result<List<News>, Throwable>> {
+    suspend fun getNews(forceUpdate: Boolean): Flow<Result<List<News>, Throwable>> {
         return flow {
             withContext(Dispatchers.IO) {
                 newsRemoteDataSource.getNews()
