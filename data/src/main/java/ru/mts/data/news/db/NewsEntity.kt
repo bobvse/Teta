@@ -13,4 +13,17 @@ data class NewsEntity(
     @ColumnInfo(name = "desc") val description: String
 )
 
-fun NewsEntity.toDomain() = News(id = this.id, title = this.title, description = this.description)
+internal fun List<NewsEntity?>.toDomain(): List<News> {
+    return this.map { it.toDomain() }
+}
+
+fun NewsEntity?.toDomain() =
+    News(
+        id = this?.id ?: 0,
+        title = this?.title ?: "",
+        description = this?.description ?: ""
+    )
+
+fun News.toEntity() = NewsEntity(
+    id = this.id, title = this.title, description = this.description
+)
