@@ -8,7 +8,7 @@ interface NewsApiService {
 
     @POST("api/v1/sample")
     @Headers("Content-Type:application/json; charset=utf-8;")
-    suspend fun getSampleData(@Body request: NewsDto.Request): NewsDto.Response
+    suspend fun getSampleData(@Body request: NewsDto.Request): List<NewsDto.Response>
 
     @POST("login")
     @Headers("Content-Type:application/json; charset=utf-8;")

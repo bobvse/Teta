@@ -20,7 +20,7 @@ class NewsViewModel(repository: NewsRepository) : ViewModel() {
                 it.doOnError { error ->
                     _state.emit(NewsState.Error(error))
                 }.doOnSuccess { news ->
-                    _state.emit(NewsState.Content(news.id))
+                    _state.emit(NewsState.Content(news))
                 }
             }
         }

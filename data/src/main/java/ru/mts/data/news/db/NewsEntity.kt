@@ -6,6 +6,11 @@ import androidx.room.PrimaryKey
 import ru.mts.data.news.repository.News
 
 @Entity(tableName = "news")
-data class NewsEntity(@PrimaryKey @ColumnInfo(name = "id") val id: Int)
+data class NewsEntity(
+    @PrimaryKey
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "desc") val description: String
+)
 
-fun NewsEntity.toDomain() = News(this.id)
+fun NewsEntity.toDomain() = News(id = this.id, title = this.title, description = this.description)
